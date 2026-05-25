@@ -123,6 +123,7 @@ function LinkCard({
 
 export default function Home() {
   return (
+    <title>rafdev</title>
     <div className="flex items-center flex-col mx-auto w-full justify-center mt-16 px-8">
       <Image
         className="rounded-full"
