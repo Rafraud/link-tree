@@ -1,18 +1,36 @@
 {
     "name": "Rashad McKinney",
+    "subtitle": "Full-Stack Cloud Software Engineer | Rhythm Game Level Designer",
     "avatar": "https://scontent-den2-1.cdninstagram.com/v/t51.2885-19/469182818_591222596744705_319590501532651302_n.jpg?stp=dst-jpg_s150x150_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=scontent-den2-1.cdninstagram.com&_nc_cat=105&_nc_oc=Q6cZ2gEYllamZ1rYn54J1qI2o68WXQcvqriL1PoQ4Jgh0XIHkzC6UiDLfmDRdQprcVDkoFVLjDutcrowWQrW4j1QIjvH&_nc_ohc=Sfr-CbZ2H_YQ7kNvwHb3BX6&_nc_gid=xw-JVPXjtd19qp6J7cEV1Q&edm=AEYEu-QBAAAA&ccb=7-5&oh=00_Af5PpK2nIz8UDpHkEJdN8RMJr9hoHWsx0bV76T5K1_vqkA&oe=6A0B2190&_nc_sid=ead929",
         "links": [
             {
                 "title": "LinkedIn",
-                "url": "https://www.linkedin.com/in/rashadmckinney/"
+                "href": "https://www.linkedin.com/in/rashadmckinney/",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/120px-LinkedIn_icon.svg.png"
             },
             {
                 "title": "Indeed",
-                "url": "https://profile.indeed.com/p/rashadm-9snzbbj"
+                "href": "https://profile.indeed.com/p/rashadm-9snzbbj",
+                "image": "https://static.wikia.nocookie.net/logopedia/images/9/93/Indeed-Thumbnail.png/revision/latest/scale-to-width-down/1000?cb=20220308041823"
             },
             {
-                "title": "Githun",
-                "url": "https://github.com/Rafraud"
+                "title": "Github",
+                "href": "https://github.com/Rafraud",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Github_logo_svg.svg/960px-Github_logo_svg.svg.png?_=20230420150203"
+            }
+        ],
+        "socials": [
+            {
+                "title" : "Instagram",
+                "href" : "https://www.instagram.com/rafraud/"
+            },
+            {
+                "title" : "Spotify",
+                "href" : "https://open.spotify.com/user/12156124744?si=aa58d1db014842f5"
+            },
+            {
+                "title" : "Steam",
+                "href" : "https://steamcommunity.com/id/rafraud/"
             }
         ]
 }
