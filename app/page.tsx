@@ -2,10 +2,10 @@
 
 import Image from "next/image";
 import data from "../data.json";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../styles/style.module.scss";
 import Nav from "../nav/index";
-import { link } from "fs";
+import { usePathname } from 'next/navigation';
 
 export function InstaIcon({ href }: { href: string }) {
   return (
@@ -128,6 +128,12 @@ function LinkCard({
 
 export default function Home() {
   const [isActive, setIsActive] = useState(false);
+  const pathname = usePathname();
+
+
+  useEffect(() => {
+    setIsActive(false);
+  }, [pathname]);
 
   return (
     <div>
@@ -171,10 +177,9 @@ export default function Home() {
             </div>
           </div>
         </div>
-        {isActive && <Nav />}
         <div
           onClick={() => {
-            setIsActive(!isActive);
+            setIsActive(!isActive)
           }}
           className={styles.button}
         >
@@ -184,6 +189,7 @@ export default function Home() {
             }`}
           ></div>
         </div>
+        {isActive && <Nav />}
       </div>
     </div>
   );
