@@ -3,7 +3,6 @@
     width: 54px;
     height: 54px;
     border-radius: 50%;
-    background-color: #101828;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -11,7 +10,8 @@
     position: fixed;
     top: 20px;
     right: 20px;
-    z-index: auto;
+    z-index: 3;
+    opacity: 100;
 
 }
 .burger{

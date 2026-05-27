@@ -10,9 +10,9 @@ import { link } from "fs";
 export function InstaIcon({ href }: { href: string }) {
   return (
     <a href={href}>
-      <button className="w-10 h-10 flex items-center justify-center rounded-full relative overflow-hidden bg-gray-900  group transition-all duration-500">
+      <button className="cursor-pointer w-10 h-10 flex items-center justify-center rounded-full relative overflow-hidden bg-gray-900  group transition-all duration-500">
         <svg
-          className="fill-gray-400 relative z-10 transition-all duration-500 group-hover:fill-white"
+          className="fill-gray-400 relative z-1 transition-all duration-500 group-hover:fill-white"
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
@@ -37,9 +37,9 @@ export function InstaIcon({ href }: { href: string }) {
 export function SpotifyIcon({ href }: { href: string }) {
   return (
     <a href={href}>
-      <button className="w-10 h-10 flex items-center justify-center rounded-full relative overflow-hidden bg-gray-900  group transition-all duration-500">
+      <button className="cursor-pointer w-10 h-10 flex items-center justify-center rounded-full relative overflow-hidden bg-gray-900  group transition-all duration-500">
         <svg
-          className="fill-gray-400 relative z-10 transition-all duration-500 group-hover:fill-white"
+          className="fill-gray-400 relative z-1 transition-all duration-500 group-hover:fill-white"
           xmlns="http://www.w3.org/2000/svg"
           width="26"
           height="26"
@@ -64,9 +64,9 @@ export function SpotifyIcon({ href }: { href: string }) {
 export function SteamIcon({ href }: { href: string }) {
   return (
     <a href={href}>
-      <button className="w-10 h-10 flex items-center justify-center rounded-full relative overflow-hidden bg-gray-900  group transition-all duration-500">
+      <button className="cursor-pointer w-10 h-10 flex items-center justify-center rounded-full relative overflow-hidden bg-gray-900  group transition-all duration-500">
         <svg
-          className="fill-gray-400 relative z-10 transition-all duration-500 group-hover:fill-white"
+          className="fill-gray-400 relative z-1 transition-all duration-500 group-hover:fill-white"
           xmlns="http://www.w3.org/2000/svg"
           width="26"
           height="26"
@@ -130,49 +130,61 @@ export default function Home() {
   const [isActive, setIsActive] = useState(false);
 
   return (
-    <>
-      <div className="flex items-center flex-col mx-auto w-full justify-center mt-16 px-8">
-        <Image
-          className="rounded-full"
-          alt={data.name}
-          src={data.avatar}
-          width={96}
-          height={96}
-        />
-        <h1 className="flex justify-center text-center font-bold mt-4 mb-1 text-xl text-gray-200">
-          {data.name}
-        </h1>
-        <h1 className="flex justify-center text-center font-semibold mb-6 text-s text-gray-200">
-          {data.subtitle}
-        </h1>
-        {data.links.map((link) => (
-          <LinkCard key={link.href} {...link} />
-        ))}
-        <div className="flex items-center gap-2 mt-2">
-          {data.socials.map((link) => {
-            if (link.href.includes("instagram")) {
-              return <InstaIcon key={link.href} {...link} />;
-            }
-            if (link.href.includes("spotify")) {
-              return <SpotifyIcon key={link.href} {...link} />;
-            }
-            if (link.href.includes("steamcommunity")) {
-              return <SteamIcon key={link.href} {...link} />;
-            }
-          })}
-        </div>
-      {isActive && <Nav />}
+    <div>
       <div
-        onClick={() => {
-          setIsActive(!isActive);
-        }}
-        className={styles.button}
+        className={`flex items-center flex-col mx-auto w-full justify-center mt-16 px-8`}
       >
         <div
-          className={`${styles.burger} ${isActive ? styles.burgerActive : ""}`}
-        ></div>
+          className={`flex items-center flex-col mx-auto w-full justify-center mt-16 px-8 transition-opacity duration-300 ${
+            isActive ? "opacity-40" : "opacity-100"
+          }`}
+        >
+          <Image
+            className="rounded-full"
+            alt={data.name}
+            src={data.avatar}
+            width={96}
+            height={96}
+          />
+          <h1 className="flex justify-center text-center font-bold mt-4 mb-1 text-xl text-gray-200">
+            {data.name}
+          </h1>
+          <h1 className="flex justify-center text-center font-semibold mb-6 text-s text-gray-200">
+            {data.subtitle}
+          </h1>
+          {data.links.map((link) => (
+            <LinkCard key={link.href} {...link} />
+          ))}
+          <div>
+            <div className="flex items-center gap-2 mt-2">
+              {data.socials.map((link) => {
+                if (link.href.includes("instagram")) {
+                  return <InstaIcon key={link.href} {...link} />;
+                }
+                if (link.href.includes("spotify")) {
+                  return <SpotifyIcon key={link.href} {...link} />;
+                }
+                if (link.href.includes("steamcommunity")) {
+                  return <SteamIcon key={link.href} {...link} />;
+                }
+              })}
+            </div>
+          </div>
+        </div>
+        {isActive && <Nav />}
+        <div
+          onClick={() => {
+            setIsActive(!isActive);
+          }}
+          className={styles.button}
+        >
+          <div
+            className={`${styles.burger} ${
+              isActive ? styles.burgerActive : ""
+            }`}
+          ></div>
+        </div>
       </div>
-      </div>
-    </>
+    </div>
   );
 }
