@@ -1,5 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import data from "../data.json";
+import { useState } from "react";
+import styles from "../styles/style.module.scss";
+import Nav from "../nav/index";
 import { link } from "fs";
 
 export function InstaIcon({ href }: { href: string }) {
@@ -122,37 +127,52 @@ function LinkCard({
 }
 
 export default function Home() {
+  const [isActive, setIsActive] = useState(false);
+
   return (
-    <div className="flex items-center flex-col mx-auto w-full justify-center mt-16 px-8">
-      <Image
-        className="rounded-full"
-        alt={data.name}
-        src={data.avatar}
-        width={96}
-        height={96}
-      />
-      <h1 className="flex justify-center text-center font-bold mt-4 mb-1 text-xl text-gray-200">
-        {data.name}
-      </h1>
-      <h1 className="flex justify-center text-center font-semibold mb-6 text-s text-gray-200">
-        {data.subtitle}
-      </h1>
-      {data.links.map((link) => (
-        <LinkCard key={link.href} {...link} />
-      ))}
-      <div className="flex items-center gap-2 mt-2">
-        {data.socials.map((link) => {
-          if (link.href.includes("instagram")) {
-            return <InstaIcon key={link.href} {...link} />;
-          }
-          if (link.href.includes("spotify")) {
-            return <SpotifyIcon key={link.href} {...link} />;
-          }
-          if (link.href.includes("steamcommunity")) {
-            return <SteamIcon key={link.href} {...link} />;
-          }
-        })}
+    <>
+      <div className="flex items-center flex-col mx-auto w-full justify-center mt-16 px-8">
+        <Image
+          className="rounded-full"
+          alt={data.name}
+          src={data.avatar}
+          width={96}
+          height={96}
+        />
+        <h1 className="flex justify-center text-center font-bold mt-4 mb-1 text-xl text-gray-200">
+          {data.name}
+        </h1>
+        <h1 className="flex justify-center text-center font-semibold mb-6 text-s text-gray-200">
+          {data.subtitle}
+        </h1>
+        {data.links.map((link) => (
+          <LinkCard key={link.href} {...link} />
+        ))}
+        <div className="flex items-center gap-2 mt-2">
+          {data.socials.map((link) => {
+            if (link.href.includes("instagram")) {
+              return <InstaIcon key={link.href} {...link} />;
+            }
+            if (link.href.includes("spotify")) {
+              return <SpotifyIcon key={link.href} {...link} />;
+            }
+            if (link.href.includes("steamcommunity")) {
+              return <SteamIcon key={link.href} {...link} />;
+            }
+          })}
+        </div>
+      {isActive && <Nav />}
+      <div
+        onClick={() => {
+          setIsActive(!isActive);
+        }}
+        className={styles.button}
+      >
+        <div
+          className={`${styles.burger} ${isActive ? styles.burgerActive : ""}`}
+        ></div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }
