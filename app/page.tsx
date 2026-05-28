@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import styles from "../styles/style.module.scss";
 import Nav from "../nav/index";
 import { usePathname } from 'next/navigation';
+import { AnimatePresence } from 'framer-motion';
 
 export function InstaIcon({ href }: { href: string }) {
   return (
@@ -28,7 +29,7 @@ export function InstaIcon({ href }: { href: string }) {
             fill=""
           />
         </svg>
-        <div className="absolute top-full left-0 w-full h-full rounded-full bg-gradient-to-bl from-purple-500 via-pink-500 to-yellow-500 z-0 transition-all duration-500 group-hover:top-0"></div>
+        <div className="absolute top-full left-0 w-full h-full rounded-full bg-gradient-to-bl from-purple-500 via-pink-500 to-yellow-500 z-0 transition-all duration-100 group-hover:top-0"></div>
       </button>
     </a>
   );
@@ -55,7 +56,7 @@ export function SpotifyIcon({ href }: { href: string }) {
             fill=""
           />
         </svg>
-        <div className="absolute top-full left-0 w-full h-full rounded-full bg-gradient-to-bl from-green-200 via-black-300 to-green-500 z-0 transition-all duration-500 group-hover:top-0"></div>
+        <div className="absolute top-full left-0 w-full h-full rounded-full bg-gradient-to-bl from-green-200 via-black-300 to-green-500 z-0 transition-all duration-100 group-hover:top-0"></div>
       </button>
     </a>
   );
@@ -82,7 +83,7 @@ export function SteamIcon({ href }: { href: string }) {
             fill=""
           />
         </svg>
-        <div className="absolute top-full left-0 w-full h-full rounded-full bg-gradient-to-bl from-blue-900 via-black-400 to-blue-500 z-0 transition-all duration-500 group-hover:top-0"></div>
+        <div className="absolute top-full left-0 w-full h-full rounded-full bg-gradient-to-bl from-blue-900 via-black-400 to-blue-500 z-0 transition-all duration-100 group-hover:top-0"></div>
       </button>
     </a>
   );
@@ -102,7 +103,7 @@ function LinkCard({
       href={href}
       className="flex items-center p-1
             w-full rounded-md
-            hover:scale-105 transition-all
+            hover:scale-105 transition-all duration-100
             border-none bg-gray-900 mb-3 max-w-3xl"
     >
       <div
@@ -142,21 +143,24 @@ export default function Home() {
       >
         <div
           className={`flex items-center flex-col mx-auto w-full justify-center mt-16 px-8 transition-opacity duration-300 ${
-            isActive ? "opacity-40" : "opacity-100"
+            isActive ? "opacity-30" : "opacity-100"
           }`}
         >
           <Image
             className="rounded-full"
             alt={data.name}
             src={data.avatar}
-            width={96}
-            height={96}
+            width={90}
+            height={90}
           />
           <h1 className="flex justify-center text-center font-bold mt-4 mb-1 text-xl text-gray-200">
             {data.name}
           </h1>
-          <h1 className="flex justify-center text-center font-semibold mb-6 text-s text-gray-200">
+          <h1 className="flex justify-center text-center font-semibold text-xs text-gray-200">
             {data.subtitle}
+          </h1>
+          <h1 className="flex justify-center text-center font-semibold mb-6 text-xs text-gray-200">
+            {data.subtitle2}
           </h1>
           {data.links.map((link) => (
             <LinkCard key={link.href} {...link} />
@@ -189,7 +193,10 @@ export default function Home() {
             }`}
           ></div>
         </div>
-        {isActive && <Nav />}
+        <AnimatePresence mode="wait">
+            {isActive && <Nav />}
+        </AnimatePresence>
+
       </div>
     </div>
   );
