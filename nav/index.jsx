@@ -12,13 +12,7 @@ export default function index() {
       exit="exit"
       className={styles.menu}
     >
-      <div className={styles.body}>
-        <p>Contact</p>
         <ContactForm />
-        <div className={styles.nav}>
-          <div className={styles.header}>{/* Contact form here */}</div>
-        </div>
-      </div>
     </motion.div>
   );
 }
