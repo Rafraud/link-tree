@@ -216,8 +216,8 @@ export default function Home() {
                 style={{
                   color: "#f1f2ff",
                   width: "700px",
-                  '--rhm-rect-active': '#1648eb',
-                }}
+                  "--rhm-rect-active": '#1648eb',
+                } as React.CSSProperties}
                 rectRender={(props, data) => {
                   // if (!data.count) return <rect {...props} />;
                   return (
