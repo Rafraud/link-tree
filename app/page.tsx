@@ -217,14 +217,14 @@ export default function Home() {
                   color: "#f1f2ff",
                   width: "700px",
                 }}
-                // rectRender={(props, data) => {
-                //   // if (!data.count) return <rect {...props} />;
-                //   return (
-                //     <Tooltip content={`count: ${data.count || 0}`}>
-                //       <rect {...props} />
-                //     </Tooltip>
-                //   );
-                // }}
+                rectRender={(props, data) => {
+                  // if (!data.count) return <rect {...props} />;
+                  return (
+                    <Tooltip content={`count: ${data.count || 0}`}>
+                      <rect {...props} />
+                    </Tooltip>
+                  );
+                }}
                 panelColors={{
                   0: "#cddbf4",
                   7: "#93b3e4",
