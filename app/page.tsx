@@ -7,6 +7,9 @@ import styles from "../styles/style.module.scss";
 import Nav from "../nav/index";
 import { usePathname } from "next/navigation";
 import { AnimatePresence } from "framer-motion";
+import heatmap from "../heatmap.json";
+import HeatMap from "@uiw/react-heat-map";
+import Tooltip from "@uiw/react-tooltip";
 import React from "react";
 
 // reactstrap components
@@ -102,29 +105,6 @@ function LinkCard({
   title: string;
   image?: string;
 }) {
-  // if (title === "Projects") {
-  //   const [showProjects, setShowProjects] = useState(false);
-  //   return (
-  //     <div
-  //       className="flex items-center justify-center p-1
-  //             w-full rounded-md
-  //             hover:scale-105 transition-all duration-100
-  //             border-none bg-gray-900 mb-3 max-w-3xl"
-  //     >
-  //       <button
-  //         className="flex flex-row items-center justify-between w-full cursor-pointer"
-  //         onClick={() => setShowProjects(!showProjects)}
-  //       >
-  //         <h2 className="flex justify-center items-center font-semibold w-full text-gray-200">
-  //           {title}
-  //         </h2>
-  //         {/* <span className="font-bold text-gray-200 px-2">
-  //           {showProjects ? "^" : "⌄"}
-  //         </span> */}
-  //       </button>
-  //     </div>
-  //   );
-  // }
   if (title !== "Projects") {
     return (
       <a
@@ -156,9 +136,30 @@ function LinkCard({
   }
 }
 
+type DateCount = { date: string; count: number };
+
+function formatDate(tsSeconds: number) {
+  const date = new Date(tsSeconds * 1000);
+  const year = date.getUTCFullYear();
+  const month = String(date.getUTCMonth() + 1).padStart(2, "0");
+  const day = String(date.getUTCDate()).padStart(2, "0");
+  return `${year}/${month}/${day}`;
+}
+
+function heatmapToAggregatedDateCounts(points: number[][]): DateCount[] {
+  const byDate = points.reduce<Record<string, number>>((acc, [ts, count]) => {
+    const date = formatDate(ts as number);
+    acc[date] = (acc[date] ?? 0) + (count as number);
+    return acc;
+  }, {});
+
+  return Object.entries(byDate).map(([date, count]) => ({ date, count }));
+}
+
 export default function Home() {
   const [isActive, setIsActive] = useState(false);
   const pathname = usePathname();
+  const value = heatmapToAggregatedDateCounts(heatmap.heatmapData);
 
   useEffect(() => {
     setIsActive(false);
@@ -193,6 +194,55 @@ export default function Home() {
           {data.links.map((link) => (
             <LinkCard key={link.href} {...link} />
           ))}
+          <h1 className="flex justify-center text-center font-semibold mt-6 mb-1 text-gray-200">
+            {" "}
+            Projects
+          </h1>
+          <span
+            style={{ fontSize: 12 }}
+            className="flex justify-center text-center label-text text-gray-200 max-w-3xl mb-2"
+          >
+            In my freetime I am a Tech Lead, QA Tester, and Level Designer for a
+            community run live service rhythm game! Check out my git activity
+            below
+          </span>
+          <span className="flex justify-center text-center label-text text-gray-200"></span>
+          <div className="w-full overflow-x-auto">
+            <div className="flex justify-center w-max min-w-full mx-auto">
+              <HeatMap
+                value={value}
+                startDate={new Date("2025/06/01")}
+                style={{
+                  color: "#f1f2ff",
+                  width: "700px",
+                }}
+                // rectRender={(props, data) => {
+                //   // if (!data.count) return <rect {...props} />;
+                //   return (
+                //     <Tooltip content={`count: ${data.count || 0}`}>
+                //       <rect {...props} />
+                //     </Tooltip>
+                //   );
+                // }}
+                panelColors={{
+                  0: "#cddbf4",
+                  7: "#93b3e4",
+                  14: "#6293d4",
+                  21: "#3a80c2",
+                  28: "#0045ad",
+                  35: "#002f6c",
+                }}
+              />
+            </div>
+          </div>
+          <Image
+            alt="pic"
+            src="/static/images/IMG_20250223_030042~5.jpg"
+            width="0"
+            height="0"
+            sizes="100vw"
+            className="w-full h-auto mt-3 mb-1 max-w-xl"
+          />
           <div>
             <div className="flex items-center gap-2 mt-2">
               {data.socials.map((link) => {
@@ -207,6 +257,7 @@ export default function Home() {
                 }
               })}
             </div>
+            <div className="mt-6"></div>
           </div>
         </div>
         <div
