@@ -11,6 +11,7 @@ import heatmap from "../heatmap.json";
 import HeatMap from "@uiw/react-heat-map";
 import Tooltip from "@uiw/react-tooltip";
 import React from "react";
+import img from '../static/images/IMG_20250223_030042~5.jpg'
 
 // reactstrap components
 import { Button, Card, Collapse } from "reactstrap";
@@ -237,7 +238,7 @@ export default function Home() {
           </div>
           <Image
             alt="pic"
-            src="/static/images/IMG_20250223_030042~5.jpg"
+            src={img}
             width="0"
             height="0"
             sizes="100vw"
