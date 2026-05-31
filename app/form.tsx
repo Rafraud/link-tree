@@ -53,7 +53,7 @@ export const ContactForm = () => {
             <span className="label-text">Full Name</span>
           </label>
           <input
-            className="input w-full input-bordered input-primary mb-2 mt-1 text-gray-900 bg-gray-200 rounded-md"
+            className="input w-full input-bordered input-primary mb-2 mt-1 text-gray-900 bg-gray-200 rounded-md px-1"
             value={name}
             onChange={(e) => setName(e.target.value)}
             type="text"
@@ -65,11 +65,11 @@ export const ContactForm = () => {
             <span className="label-text">Email</span>
           </label>
           <input
-            className="input w-full input-bordered input-primary mb-2 mt-1 text-gray-900 bg-gray-200 rounded-md"
+            className="input w-full input-bordered input-primary mb-2 mt-1 text-gray-900 bg-gray-200 rounded-md px-1"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             type="email"
-            placeholder=" name@example.com"
+            placeholder="name@example.com"
           />
         </div>
         <div>
@@ -79,12 +79,12 @@ export const ContactForm = () => {
           <div>
             <textarea
               name="contact"
-              className="textarea w-full h-full textarea-primary mb-2 mt-1 text-gray-900 bg-gray-200 rounded-md"
+              className="textarea w-full h-full textarea-primary mb-2 mt-1 text-gray-900 bg-gray-200 rounded-md px-1"
               maxLength={500}
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               rows={10}
-              placeholder=" What's up!? (Max 500 characters)"
+              placeholder="What's up!? (Max 500 characters)"
             ></textarea>
           </div>
         </div>

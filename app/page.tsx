@@ -5,8 +5,12 @@ import data from "../data.json";
 import { useEffect, useState } from "react";
 import styles from "../styles/style.module.scss";
 import Nav from "../nav/index";
-import { usePathname } from 'next/navigation';
-import { AnimatePresence } from 'framer-motion';
+import { usePathname } from "next/navigation";
+import { AnimatePresence } from "framer-motion";
+import React from "react";
+
+// reactstrap components
+import { Button, Card, Collapse } from "reactstrap";
 
 export function InstaIcon({ href }: { href: string }) {
   return (
@@ -98,39 +102,63 @@ function LinkCard({
   title: string;
   image?: string;
 }) {
-  return (
-    <a
-      href={href}
-      className="flex items-center p-1
+  // if (title === "Projects") {
+  //   const [showProjects, setShowProjects] = useState(false);
+  //   return (
+  //     <div
+  //       className="flex items-center justify-center p-1
+  //             w-full rounded-md
+  //             hover:scale-105 transition-all duration-100
+  //             border-none bg-gray-900 mb-3 max-w-3xl"
+  //     >
+  //       <button
+  //         className="flex flex-row items-center justify-between w-full cursor-pointer"
+  //         onClick={() => setShowProjects(!showProjects)}
+  //       >
+  //         <h2 className="flex justify-center items-center font-semibold w-full text-gray-200">
+  //           {title}
+  //         </h2>
+  //         {/* <span className="font-bold text-gray-200 px-2">
+  //           {showProjects ? "^" : "⌄"}
+  //         </span> */}
+  //       </button>
+  //     </div>
+  //   );
+  // }
+  if (title !== "Projects") {
+    return (
+      <a
+        href={href}
+        className="flex items-center p-1
             w-full rounded-md
             hover:scale-105 transition-all duration-100
             border-none bg-gray-900 mb-3 max-w-3xl"
-    >
-      <div
-        className="flex text-center
-            w-full"
       >
-        {image && (
-          <Image
-            className="rounded-sm"
-            alt={title}
-            src={image}
-            width={40}
-            height={40}
-          />
-        )}
-        <h2 className="flex justify-center items-center font-semibold w-full text-gray-200 -ml-10">
-          {title}
-        </h2>
-      </div>
-    </a>
-  );
+        <div
+          className="flex text-center
+            w-full"
+        >
+          {image && (
+            <Image
+              className="rounded-sm"
+              alt={title}
+              src={image}
+              width={40}
+              height={40}
+            />
+          )}
+          <h2 className="flex justify-center items-center font-semibold w-full text-gray-200 -ml-10">
+            {title}
+          </h2>
+        </div>
+      </a>
+    );
+  }
 }
 
 export default function Home() {
   const [isActive, setIsActive] = useState(false);
   const pathname = usePathname();
-
 
   useEffect(() => {
     setIsActive(false);
@@ -183,7 +211,7 @@ export default function Home() {
         </div>
         <div
           onClick={() => {
-            setIsActive(!isActive)
+            setIsActive(!isActive);
           }}
           className={styles.button}
         >
@@ -193,10 +221,7 @@ export default function Home() {
             }`}
           ></div>
         </div>
-        <AnimatePresence mode="wait">
-            {isActive && <Nav />}
-        </AnimatePresence>
-
+        <AnimatePresence mode="wait">{isActive && <Nav />}</AnimatePresence>
       </div>
     </div>
   );
