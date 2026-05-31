@@ -69,7 +69,7 @@ export const ContactForm = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             type="email"
-            placeholder="name@example.com"
+            placeholder=" name@example.com"
           />
         </div>
         <div>
@@ -84,7 +84,7 @@ export const ContactForm = () => {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               rows={10}
-              placeholder="What's up!? (Max 500 characters)"
+              placeholder=" What's up!? (Max 500 characters)"
             ></textarea>
           </div>
         </div>
