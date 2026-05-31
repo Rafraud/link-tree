@@ -203,9 +203,8 @@ export default function Home() {
             style={{ fontSize: 12 }}
             className="flex justify-center text-center label-text text-gray-200 max-w-3xl mb-2"
           >
-            In my freetime I am a Tech Lead, QA Tester, and Level Designer for a
-            community-run Live Service Rhythm Game! Check out my git activity
-            below
+            In my freetime I am a Tech Lead, Level Designer, and Lead QA on a
+            community-driven Live Service Rhythm Game! Check out my git contributions for our ongoing updates below. 
           </span>
           <span className="flex justify-center text-center label-text text-gray-200"></span>
           <div className="w-full overflow-x-auto">
