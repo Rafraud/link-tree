@@ -259,7 +259,7 @@ export default function Home() {
                 }
               })}
             </div>
-            <div className="mt-6"></div>
+            <div className="mt-12"></div>
           </div>
         </div>
         <div
