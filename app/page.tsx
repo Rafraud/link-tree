@@ -216,6 +216,7 @@ export default function Home() {
                 style={{
                   color: "#f1f2ff",
                   width: "700px",
+                  '--rhm-rect-active': '#1648eb',
                 }}
                 rectRender={(props, data) => {
                   // if (!data.count) return <rect {...props} />;
