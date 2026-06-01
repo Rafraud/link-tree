@@ -215,9 +215,10 @@ export default function Home() {
             community-driven Live Service Rhythm Game! Check out my git contributions for our ongoing updates below. 
           </span>
           <span className="flex justify-center text-center label-text text-gray-200"></span>
-          <div className="w-full overflow-x-auto" ref={mapRef} onScroll={mapScrolled}>
+          <div className="w-full overflow-x-auto" ref={mapRef}>
             <div className="flex justify-center w-max min-w-full mx-auto">
               <HeatMap
+                onScroll={mapScrolled}
                 value={value}
                 startDate={new Date("2025/06/01")}
                 style={{
