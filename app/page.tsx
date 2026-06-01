@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import data from "../data.json";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "../styles/style.module.scss";
 import Nav from "../nav/index";
 import { usePathname } from "next/navigation";
@@ -162,10 +162,26 @@ export default function Home() {
   const pathname = usePathname();
   const value = heatmapToAggregatedDateCounts(heatmap.heatmapData);
   const [showTooltip, setShowTooltip] = useState(false);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setIsActive(false);
-    window.addEventListener('scroll', () => setShowTooltip(false));
+
+    const handleWindowScroll = () => setShowTooltip(false);
+    window.addEventListener('scroll', handleWindowScroll);
+    
+    const scrollContainer = scrollContainerRef.current;
+    const handleContainerScroll = () => setShowTooltip(false);
+    if (scrollContainer) {
+      scrollContainer.addEventListener('scroll', handleContainerScroll);
+    }
+    
+    return () => {
+      window.removeEventListener('scroll', handleWindowScroll);
+      if (scrollContainer) {
+        scrollContainer.removeEventListener('scroll', handleContainerScroll);
+      }
+    };
   }, [pathname]);
 
   return (
@@ -209,7 +225,7 @@ export default function Home() {
             community-driven Live Service Rhythm Game! Check out my git contributions for our ongoing updates below. 
           </span>
           <span className="flex justify-center text-center label-text text-gray-200"></span>
-          <div className="w-full overflow-x-auto" onScroll={() => setShowTooltip(false)}>
+          <div className="w-full overflow-x-auto" ref={scrollContainerRef}>
             <div className="flex justify-center w-max min-w-full mx-auto">
               <HeatMap
                 value={value}
