@@ -219,8 +219,10 @@ export default function Home() {
                 } as React.CSSProperties}
                 rectRender={(props, data) => {
                   // if (!data.count) return <rect {...props} />;
+                  let formattedDate = new Date (data.date)
                   return (
-                    <Tooltip content={data.count ? `${data.count} contributions` : `No contributions` }>
+                    <Tooltip content={data.count ? `${formattedDate.toDateString().split(' ').slice(1).join(' ')}: ${data.count} contributions` 
+                      : `${formattedDate.toDateString().split(' ').slice(1).join(' ')}: No contributions` }>
                       <rect {...props} />
                     </Tooltip>
                   );
