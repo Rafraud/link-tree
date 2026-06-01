@@ -224,6 +224,7 @@ export default function Home() {
                   let formattedDate = new Date (data.date)
                   return (
                     <Tooltip
+                      isClickOutside={false}
                       visible={showTooltip}
                       onVisibleChange={(visible) => setShowTooltip(visible)}
                       visibleArrow={false}
