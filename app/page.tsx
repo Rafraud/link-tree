@@ -163,13 +163,11 @@ export default function Home() {
   const value = heatmapToAggregatedDateCounts(heatmap.heatmapData);
   const [showTooltip, setShowTooltip] = useState(false);
 
-  const mapToolHide = () => setShowTooltip(false);
-
   useEffect(() => {
     setIsActive(false);
     window.addEventListener('scroll', () => setShowTooltip(false));
-    window.addEventListener('touchmove', mapToolHide, { passive: true });
-    window.addEventListener('pointerdown', mapToolHide);
+    window.addEventListener('touchmove', () => setShowTooltip(false));
+    window.addEventListener('pointerdown', () => setShowTooltip(false));
   }, [pathname]);
 
   return (
