@@ -221,8 +221,11 @@ export default function Home() {
                   // if (!data.count) return <rect {...props} />;
                   let formattedDate = new Date (data.date)
                   return (
-                    <Tooltip content={data.count ? `${formattedDate.toDateString().split(' ').slice(1).join(' ')}: ${data.count} contributions` 
-                      : `${formattedDate.toDateString().split(' ').slice(1).join(' ')}: No contributions` }>
+                    <Tooltip 
+                      content={data.count ? 
+                        `${formattedDate.toDateString().split(' ').slice(1).join(' ')}: ${data.count} ${data.count > 1 ? "contributions" : "contribution"}` :
+                        `${formattedDate.toDateString().split(' ').slice(1).join(' ')}: No contributions` }
+                      contentStyle={{textAlign: "center"}}>
                       <rect {...props} />
                     </Tooltip>
                   );
