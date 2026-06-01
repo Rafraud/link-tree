@@ -200,7 +200,7 @@ export default function Home() {
             Projects
           </h1>
           <span
-            style={{ fontSize: 12 }}
+            style={{ fontSize: 13 }}
             className="flex justify-center text-center label-text text-gray-200 max-w-3xl mb-2"
           >
             In my freetime I am a Tech Lead, Level Designer, and Lead QA on a
