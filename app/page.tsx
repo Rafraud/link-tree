@@ -162,6 +162,12 @@ export default function Home() {
   const pathname = usePathname();
   const value = heatmapToAggregatedDateCounts(heatmap.heatmapData);
   const [showTooltip, setShowTooltip] = useState(false);
+  const mapRef = useRef(null);
+
+
+  const mapScrolled = () => {
+    setShowTooltip(false);
+  };
 
   useEffect(() => {
     setIsActive(false);
@@ -209,7 +215,7 @@ export default function Home() {
             community-driven Live Service Rhythm Game! Check out my git contributions for our ongoing updates below. 
           </span>
           <span className="flex justify-center text-center label-text text-gray-200"></span>
-          <div className="w-full overflow-x-auto">
+          <div className="w-full overflow-x-auto" ref={mapRef} onScroll={mapScrolled}>
             <div className="flex justify-center w-max min-w-full mx-auto">
               <HeatMap
                 value={value}
@@ -222,6 +228,7 @@ export default function Home() {
                 rectRender={(props, data) => {
                   // if (!data.count) return <rect {...props} />;
                   let formattedDate = new Date (data.date)
+                  if(setShowTooltip){
                   return (
                     <Tooltip
                       visible={showTooltip}
@@ -234,7 +241,7 @@ export default function Home() {
                         `No contributions - ${formattedDate.toDateString().split(' ').slice(1).join(' ')}` }>
                       <rect {...props} />
                     </Tooltip>
-                  );
+                  );}
                 }}
                 panelColors={{
                   0: "#cddbf4",
