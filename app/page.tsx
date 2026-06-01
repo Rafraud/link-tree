@@ -166,22 +166,7 @@ export default function Home() {
 
   useEffect(() => {
     setIsActive(false);
-
-    const handleWindowScroll = () => setShowTooltip(false);
-    window.addEventListener('scroll', handleWindowScroll);
-    
-    const scrollContainer = scrollContainerRef.current;
-    const handleContainerScroll = () => setShowTooltip(false);
-    if (scrollContainer) {
-      scrollContainer.addEventListener('scroll', handleContainerScroll);
-    }
-    
-    return () => {
-      window.removeEventListener('scroll', handleWindowScroll);
-      if (scrollContainer) {
-        scrollContainer.removeEventListener('scroll', handleContainerScroll);
-      }
-    };
+    window.addEventListener('scroll', () => setShowTooltip(false));
   }, [pathname]);
 
   return (
@@ -225,7 +210,7 @@ export default function Home() {
             community-driven Live Service Rhythm Game! Check out my git contributions for our ongoing updates below. 
           </span>
           <span className="flex justify-center text-center label-text text-gray-200"></span>
-          <div className="w-full overflow-x-auto" ref={scrollContainerRef}>
+          <div className="w-full overflow-x-auto" onScroll={() => setShowTooltip(false)}>
             <div className="flex justify-center w-max min-w-full mx-auto">
               <HeatMap
                 value={value}
@@ -240,6 +225,7 @@ export default function Home() {
                   let formattedDate = new Date (data.date)
                   return (
                     <Tooltip
+                      timeout={3000}
                       visible={showTooltip}
                       onVisibleChange={(visible) => setShowTooltip(visible)}
                       visibleArrow={false}
