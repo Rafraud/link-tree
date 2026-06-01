@@ -230,8 +230,8 @@ export default function Home() {
                       autoAdjustOverflow={true}
                       className="flex justify-center text-center items-center flex-col mx-auto w-full"
                       content={data.count ? 
-                        `${formattedDate.toDateString().split(' ').slice(1).join(' ')}: ${data.count} ${data.count > 1 ? "contributions" : "contribution"}` :
-                        `${formattedDate.toDateString().split(' ').slice(1).join(' ')}: No contributions` }>
+                        `${data.count} ${data.count > 1 ? "contributions" : "contribution"} - ${formattedDate.toDateString().split(' ').slice(1).join(' ')}` :
+                        `No contributions - ${formattedDate.toDateString().split(' ').slice(1).join(' ')}` }>
                       <rect {...props} />
                     </Tooltip>
                   );
