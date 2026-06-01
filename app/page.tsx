@@ -165,12 +165,7 @@ export default function Home() {
 
   useEffect(() => {
     setIsActive(false);
-    const handleScroll = () => setShowTooltip(false);
-    window.addEventListener('scroll', handleScroll);
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    window.addEventListener('scroll', () => setShowTooltip(false));
   }, [pathname]);
 
   return (
