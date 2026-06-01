@@ -50,7 +50,7 @@ export const ContactForm = () => {
       <form onSubmit={onSubmit} className="flex flex-col gap-2">
         <div>
           <label className="label font-semibold">
-            <span className="label-text">Full Name</span>
+            <span className="label-text">Name</span>
           </label>
           <input
             className="input w-full input-bordered input-primary mb-2 mt-1 text-gray-900 bg-gray-200 rounded-md px-1"
@@ -65,7 +65,7 @@ export const ContactForm = () => {
             <span className="label-text">Email</span>
           </label>
           <input
-            className="input w-full input-bordered input-primary mb-2 mt-1 text-gray-900 bg-gray-200 rounded-md px-1"
+            className="input w-full input-bordered input-primary mb-2 mt-1 text-gray-900 bg-gray-200 rounded-md px-1 placeholder:italic"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             type="email"
@@ -79,7 +79,7 @@ export const ContactForm = () => {
           <div>
             <textarea
               name="contact"
-              className="textarea w-full h-full textarea-primary mb-2 mt-1 text-gray-900 bg-gray-200 rounded-md px-1"
+              className="textarea w-full h-full textarea-primary mb-2 mt-1 text-gray-900 bg-gray-200 rounded-md px-1 placeholder:italic"
               maxLength={500}
               value={message}
               onChange={(e) => setMessage(e.target.value)}
