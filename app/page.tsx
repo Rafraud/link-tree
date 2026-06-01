@@ -162,13 +162,25 @@ export default function Home() {
   const pathname = usePathname();
   const value = heatmapToAggregatedDateCounts(heatmap.heatmapData);
   const [showTooltip, setShowTooltip] = useState(false);
+  const mapbox = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     setIsActive(false);
+
     window.addEventListener('scroll', () => setShowTooltip(false));
     window.addEventListener('touchmove', () => setShowTooltip(false));
     window.addEventListener('pointerdown', () => setShowTooltip(false));
+
   }, [pathname]);
+
+  useEffect(() => {
+    const map = mapbox.current?.querySelector('.mapbox');
+
+    map?.addEventListener('scroll', () => setShowTooltip(false));
+    map?.addEventListener('touchmove', () => setShowTooltip(false));
+    map?.addEventListener('pointerdown', () => setShowTooltip(false));
+
+  }, []);
 
   return (
     <div>
@@ -211,7 +223,7 @@ export default function Home() {
             community-driven Live Service Rhythm Game! Check out my git contributions for our ongoing updates below. 
           </span>
           <span className="flex justify-center text-center label-text text-gray-200"></span>
-          <div className="w-full overflow-x-auto">
+          <div className="w-full overflow-x-auto" ref={mapbox}>
             <div className="flex justify-center w-max min-w-full mx-auto">
               <HeatMap
                 value={value}
