@@ -220,7 +220,7 @@ export default function Home() {
                 rectRender={(props, data) => {
                   // if (!data.count) return <rect {...props} />;
                   return (
-                    <Tooltip content={`count: ${data.count || 0}`}>
+                    <Tooltip content={data.count ? `${data.count} contributions` : `No contributions` }>
                       <rect {...props} />
                     </Tooltip>
                   );
