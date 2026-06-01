@@ -214,7 +214,7 @@ export default function Home() {
                 startDate={new Date("2025/06/01")}
                 style={{
                   color: "#f1f2ff",
-                  width: "700px",
+                  width: "710px",
                   "--rhm-rect-active": '#004299',
                 } as React.CSSProperties}
                 rectRender={(props, data) => {
