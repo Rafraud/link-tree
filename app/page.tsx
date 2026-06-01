@@ -222,10 +222,10 @@ export default function Home() {
                   let formattedDate = new Date (data.date)
                   return (
                     <Tooltip 
+                      className="flex items-center flex-col mx-auto w-full"
                       content={data.count ? 
                         `${formattedDate.toDateString().split(' ').slice(1).join(' ')}: ${data.count} ${data.count > 1 ? "contributions" : "contribution"}` :
-                        `${formattedDate.toDateString().split(' ').slice(1).join(' ')}: No contributions` }
-                      contentStyle={{textAlign: "center"}}>
+                        `${formattedDate.toDateString().split(' ').slice(1).join(' ')}: No contributions` }>
                       <rect {...props} />
                     </Tooltip>
                   );
