@@ -161,9 +161,11 @@ export default function Home() {
   const [isActive, setIsActive] = useState(false);
   const pathname = usePathname();
   const value = heatmapToAggregatedDateCounts(heatmap.heatmapData);
+  const [showTooltip, setShowTooltip] = useState(false);
 
   useEffect(() => {
     setIsActive(false);
+    window.addEventListener('scroll', () => setShowTooltip(false));
   }, [pathname]);
 
   return (
@@ -207,7 +209,7 @@ export default function Home() {
             community-driven Live Service Rhythm Game! Check out my git contributions for our ongoing updates below. 
           </span>
           <span className="flex justify-center text-center label-text text-gray-200"></span>
-          <div className="w-full overflow-x-auto">
+          <div className="w-full overflow-x-auto" onScroll={() => setShowTooltip(false)}>
             <div className="flex justify-center w-max min-w-full mx-auto">
               <HeatMap
                 value={value}
@@ -221,8 +223,11 @@ export default function Home() {
                   // if (!data.count) return <rect {...props} />;
                   let formattedDate = new Date (data.date)
                   return (
-                    <Tooltip 
-                      style={{maxWidth: "none", whiteSpace: "nowrap"}}
+                    <Tooltip
+                      visible={showTooltip}
+                      onVisibleChange={(visible) => setShowTooltip(visible)}
+                      visibleArrow={false}
+                      autoAdjustOverflow={true}
                       className="flex justify-center text-center items-center flex-col mx-auto w-full"
                       content={data.count ? 
                         `${formattedDate.toDateString().split(' ').slice(1).join(' ')}: ${data.count} ${data.count > 1 ? "contributions" : "contribution"}` :
