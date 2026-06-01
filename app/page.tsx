@@ -163,10 +163,13 @@ export default function Home() {
   const value = heatmapToAggregatedDateCounts(heatmap.heatmapData);
   const [showTooltip, setShowTooltip] = useState(false);
 
+  const mapToolHide = () => setShowTooltip(false);
 
   useEffect(() => {
     setIsActive(false);
     window.addEventListener('scroll', () => setShowTooltip(false));
+    window.addEventListener('touchmove', mapToolHide, { passive: true });
+    window.addEventListener('pointerdown', mapToolHide);
   }, [pathname]);
 
   return (
@@ -210,7 +213,7 @@ export default function Home() {
             community-driven Live Service Rhythm Game! Check out my git contributions for our ongoing updates below. 
           </span>
           <span className="flex justify-center text-center label-text text-gray-200"></span>
-          <div className="w-full overflow-x-auto" onScroll={() => setShowTooltip(false)} onTouchMove={() => setShowTooltip(false)}>
+          <div className="w-full overflow-x-auto">
             <div className="flex justify-center w-max min-w-full mx-auto">
               <HeatMap
                 value={value}
@@ -226,7 +229,6 @@ export default function Home() {
                   return (
                     <Tooltip
                       visible={showTooltip}
-                      usePortal={false}
                       onVisibleChange={(visible) => setShowTooltip(visible)}
                       visibleArrow={false}
                       autoAdjustOverflow={true}
