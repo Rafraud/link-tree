@@ -226,6 +226,7 @@ export default function Home() {
                   return (
                     <Tooltip
                       visible={showTooltip}
+                      usePortal={false}
                       onVisibleChange={(visible) => setShowTooltip(visible)}
                       visibleArrow={false}
                       autoAdjustOverflow={true}
