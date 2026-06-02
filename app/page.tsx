@@ -219,20 +219,14 @@ export default function Home() {
             onTouchMove={() => setShowTooltip(false)}
             onPointerDown={() => setShowTooltip(false)}
           >
-            <div className="flex justify-center w-max min-w-full overflow-x-auto"
-              onScroll={() => setShowTooltip(false)}
-              onTouchMove={() => setShowTooltip(false)}
-              onPointerDown={() => setShowTooltip(false)}
-            >
               <HeatMap
-                onScroll={() => setShowTooltip(false)}
-                onTouchMove={() => setShowTooltip(false)}
-                onPointerDown={() => setShowTooltip(false)}
                 value={value}
                 startDate={new Date("2025/06/01")}
                 style={{
                   color: "#f1f2ff",
                   width: "720px",
+                  display: "block",
+                  margin: "0 auto",
                   "--rhm-rect-active": '#07489c',
                 } as React.CSSProperties}
                 rectRender={(props, data) => {
@@ -302,6 +296,5 @@ export default function Home() {
         </div>
         <AnimatePresence mode="wait">{isActive && <Nav />}</AnimatePresence>
       </div>
-    </div>
   );
 }
