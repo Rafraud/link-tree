@@ -235,6 +235,8 @@ export default function Home() {
                     <Tooltip
                       style={{whiteSpace: "nowrap", maxWidth: "none"}}
                       visible={showTooltip}
+                      trigger="hover"
+                      delay={{hide: 2500}}
                       onVisibleChange={(visible) => setShowTooltip(visible)}
                       autoAdjustOverflow={false}
                       content={data.count ? 
