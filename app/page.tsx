@@ -236,7 +236,7 @@ export default function Home() {
                       style={{whiteSpace: "nowrap", maxWidth: "none"}}
                       visible={showTooltip}
                       onVisibleChange={(visible) => setShowTooltip(visible)}
-                      autoAdjustOverflow={true}
+                      autoAdjustOverflow={false}
                       content={data.count ? 
                         `${data.count} ${data.count > 1 ? "contributions" : "contribution"} - ${formattedDate.toDateString().split(' ').slice(1).join(' ')}` :
                         `No contributions - ${formattedDate.toDateString().split(' ').slice(1).join(' ')}` }>
