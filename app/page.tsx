@@ -233,6 +233,7 @@ export default function Home() {
                   let formattedDate = new Date (data.date)
                   return (
                     <Tooltip
+                      style={{whiteSpace: "nowrap", maxWidth: "none"}}
                       visible={showTooltip}
                       onVisibleChange={(visible) => setShowTooltip(visible)}
                       visibleArrow={false}
