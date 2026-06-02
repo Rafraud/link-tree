@@ -244,7 +244,7 @@ export default function Home() {
                           <span 
                             className="flex justify-center text-center items-center" 
                             style={{wordBreak: "keep-all", overflowWrap: "normal", flexWrap:"wrap"}}>
-                            <strong>{contributionString}</strong> - {stringDate}
+                            <strong>{contributionString}</strong>&nbsp;- {stringDate}
                           </span> : 
                           <span 
                             className="flex justify-center text-center items-center" 
