@@ -236,8 +236,6 @@ export default function Home() {
                   return (
                     <Tooltip
                       visible={showTooltip}
-                      delay={{hide: 2500}}
-                      trigger="hover"
                       onVisibleChange={(visible) => setShowTooltip(visible)}
                       visibleArrow={false}
                       content={
