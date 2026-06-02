@@ -231,17 +231,28 @@ export default function Home() {
                 rectRender={(props, data) => {
                   // if (!data.count) return <rect {...props} />;
                   let formattedDate = new Date (data.date)
+                  let contributionString = `${data.count} ${data.count > 1 ? "contributions" : "contribution"}`
+                  let stringDate = `${formattedDate.toDateString().split(' ').slice(1).join(' ')}`
                   return (
                     <Tooltip
-                      style={{whiteSpace: "nowrap", maxWidth: "none"}}
                       visible={showTooltip}
-                      trigger="hover"
                       delay={{hide: 2500}}
                       onVisibleChange={(visible) => setShowTooltip(visible)}
-                      autoAdjustOverflow={false}
-                      content={data.count ? 
-                        `${data.count} ${data.count > 1 ? "contributions" : "contribution"} - ${formattedDate.toDateString().split(' ').slice(1).join(' ')}` :
-                        `No contributions - ${formattedDate.toDateString().split(' ').slice(1).join(' ')}` }>
+                      visibleArrow={false}
+                      content={
+                        data.count ? 
+                          <span 
+                            className="flex justify-center text-center items-center" 
+                            style={{wordBreak: "keep-all", overflowWrap: "normal", flexWrap:"wrap"}}>
+                            <strong>{contributionString}</strong> - {stringDate}
+                          </span> : 
+                          <span 
+                            className="flex justify-center text-center items-center" 
+                            style={{wordBreak: "keep-all", overflowWrap: "normal", flexWrap:"wrap"}}>
+                            No contributions - {stringDate}
+                          </span>
+                        }
+                      >
                       <rect {...props} />
                     </Tooltip>
                   );
