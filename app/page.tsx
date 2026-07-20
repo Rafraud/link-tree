@@ -222,7 +222,7 @@ export default function Home() {
             <div className="flex justify-center w-max min-w-full">
               <HeatMap
                 value={value}
-                startDate={new Date("2025/07/01")}
+                startDate={new Date("2025/08/01")}
                 style={{
                   color: "#f1f2ff",
                   width: "720px",
