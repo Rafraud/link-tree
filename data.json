@@ -10,14 +10,14 @@
                 "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/120px-LinkedIn_icon.svg.png"
             },
             {
-                "title": "Indeed",
-                "href": "https://profile.indeed.com/p/rashadm-9snzbbj",
-                "image": "https://static.wikia.nocookie.net/logopedia/images/9/93/Indeed-Thumbnail.png/revision/latest/scale-to-width-down/1000?cb=20220308041823"
-            },
-            {
                 "title": "Github",
                 "href": "https://github.com/Rafraud",
                 "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Github_logo_svg.svg/960px-Github_logo_svg.svg.png?_=20230420150203"
+            },
+            {
+                "title": "Resume",
+                "href": "https://docs.google.com/document/d/1Kqwm4Wr_7iFOpSt4pFznEeIbBDB_s0JA5GN6aGKZl28/edit?usp=sharing",
+                "image": "https://static.wikia.nocookie.net/logopedia/images/9/93/Indeed-Thumbnail.png/revision/latest/scale-to-width-down/1000?cb=20220308041823"
             },
             {
                 "title": "Projects",
