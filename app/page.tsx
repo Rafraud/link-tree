@@ -213,7 +213,7 @@ export default function Home() {
             community-driven Live Service Rhythm Game! Our team serves over 50,000 concurrent players!
             I also am a contributor to a few open-source frontend and backend projects that you can see on my GitHub above.
             Code related to the Live Service Game is not public, 
-            but you can view my contributions to our ongoing updates on the heatmap below.
+            however you can view my contributions to our ongoing updates on the heatmap below.
           </span>
           <span className="flex justify-center text-center label-text text-gray-200"></span>
           <div 
