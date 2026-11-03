@@ -209,11 +209,10 @@ export default function Home() {
             style={{ fontSize: 13 }}
             className="flex justify-center text-center label-text text-gray-200 max-w-3xl mb-2"
           >
-            In my free time I am a Tech Lead, Level Designer, and QA on a
+            In my free time I am a tech lead, level designer, and QA on a
             community-driven Live Service Rhythm Game! Our team serves over 50,000 concurrent players!
             I also am a contributor to a few open-source frontend and backend projects that can be seen on my GitHub above.
-            Code related to the Live Service Game is not public, 
-            however my contributions to our ongoing updates can be viewed on the heatmap below.
+            Code related to the Live Service Game is not public. However, my contributions to its ongoing updates can be viewed on the heatmap below.
           </span>
           <span className="flex justify-center text-center label-text text-gray-200"></span>
           <div 
