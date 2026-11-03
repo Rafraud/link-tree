@@ -211,6 +211,7 @@ export default function Home() {
           >
             In my free time I am a Tech Lead, Level Designer, and QA on a
             community-driven Live Service Rhythm Game! Our team serves over 50,000 concurrent players!
+            I also am a contributor to a few open-source frontend and backend projects that you can see on my GitHub above.
             Check out my git contributions for our ongoing updates below.
           </span>
           <span className="flex justify-center text-center label-text text-gray-200"></span>
